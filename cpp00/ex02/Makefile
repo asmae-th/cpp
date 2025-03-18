@@ -1,13 +1,13 @@
 CC = c++
-FLAGS = -Wall -Werror -Wextrat -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98
 NAME = Account
-SRC = Account.cpp/ tests.cpp
+SRC = tests.cpp Account.cpp
 OBJ = $(SRC: .cpp = .o)
 
 all : $(NAME)
 
 
-$(NAME):
+$(NAME):$(OBJ)
 	$(CC) $(FLAGS) -o $@ $^
 
 clean:

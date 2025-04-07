@@ -1,21 +1,27 @@
+
 CC = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -std=c++98  -Wall -Werror -Wextra #-MMD
 NAME = Account
+INCLUDES = Account.hpp
 SRC = tests.cpp Account.cpp
-OBJ = $(SRC: .cpp = .o)
+OBJ = $(SRC:.cpp=.o)
 
-all : $(NAME)
+DEP	=	$(OBJ:.o=.d)
 
+all		: $(NAME)
 
-$(NAME):$(OBJ)
-	$(CC) $(FLAGS) -o $@ $^
+%.o: %.cpp
+	$(CC) $(FLAGS) -c $< -o $@
 
-clean:
-	rm -f $(OBJ)
+$(NAME)	:  $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-fclean: clean
-	rm -f $(NAME)
+clean	:
+	rm -rf $(OBJ)
+fclean	: clean
+	rm -rf $(NAME)
 
-re: fclean all
+re	: fclean all
 
+# -include $(DEP)
 .PHONY: all clean fclean re

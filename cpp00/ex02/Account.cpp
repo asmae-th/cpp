@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asmae <asmae@student.42.fr>                +#+  +:+       +#+        */
+/*   By: atahtouh <atahtouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 00:45:10 by asmae             #+#    #+#             */
-/*   Updated: 2025/03/18 01:13:49 by asmae            ###   ########.fr       */
+/*   Updated: 2025/04/07 14:32:32 by atahtouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ Account :: Account(int initial_deposit)
     _nbAccounts++;
     _totalAmount +=initial_deposit;
     _displayTimestamp();
-    std::cout<<" index:"<<_accountIndex<<";amount:"<<_amount<<"created"<<std::endl;
+    std::cout<<" index:"<<_accountIndex<<";amount:"<<_amount<<";created"<<std::endl;
 }
 Account :: ~Account(void)
 {
     _displayTimestamp();
-    std::cout<<" index:"<<_accountIndex<<";amount:"<<_amount<<"closed"<<std::endl;
+    std::cout<<" index:"<<_accountIndex<<";amount:"<<_amount<<";closed"<<std::endl;
 }
 
 int Account :: getNbAccounts(void)
@@ -88,7 +88,7 @@ void Account :: makeDeposit(int deposit)
     _nbDeposits++;
     _totalAmount += deposit;
     _totalNbDeposits++;
-   std::cout<<";deposit"<<deposit
+   std::cout<<";deposit:"<<deposit
             <<";amount:"<<_amount
             <<";nb_deposits:"<<_nbDeposits<<std::endl;
 }
@@ -108,7 +108,7 @@ bool Account :: makeWithdrawal( int withdrawal)
     _totalAmount -= withdrawal;
     _totalNbWithdrawals++;
 
-    std::cout<<";withdrawal"<<withdrawal
+    std::cout<<";withdrawal:"<<withdrawal
             <<";amount:"<<_amount
             <<";nb_withdrawals:"<<_nbWithdrawals<<std::endl;
     return true;

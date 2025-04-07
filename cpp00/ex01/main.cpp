@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asmae <asmae@student.42.fr>                +#+  +:+       +#+        */
+/*   By: atahtouh <atahtouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:21:25 by atahtouh          #+#    #+#             */
-/*   Updated: 2025/03/21 20:28:00 by asmae            ###   ########.fr       */
+/*   Updated: 2025/04/07 11:36:42 by atahtouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,9 @@ int addContact(PhoneBook& phonebook)
     Contact newContact;
     std::string input;
 
-    std::cout << "First Name: ";
-    
     if(std::cin.eof())
         return (-2);
+    std::cout << "First Name: ";
     while (std::getline(std::cin, input) && (input.empty() || !onlySpace(input)))
         std::cout << "Required field. First Name: ";
     input = delet_first_last_space(input);
@@ -119,9 +118,9 @@ int addContact(PhoneBook& phonebook)
     }
     newContact.setFirstName(input);
 
-     std::cout << "Last Name: ";
     if(std::cin.eof())
         return (-2);
+    std::cout << "Last Name: ";
     while (std::getline(std::cin, input) && (input.empty() || !onlySpace(input)))
         std::cout << "Required field. Last Name: ";
     input = delet_first_last_space(input);
@@ -133,11 +132,15 @@ int addContact(PhoneBook& phonebook)
     }
     newContact.setLastName(input);
      
+    if(std::cin.eof())
+        return (-2);
     std::cout << "Nick name :";
     while (std::getline(std::cin, input) && (input.empty() || !onlySpace(input)))
         std::cout << "Required field. Nick name: ";
      newContact.setNickName(input);
 
+     if(std::cin.eof())
+         return (-2);
     std::cout << "Phone number: ";
     while (std::getline(std::cin, input) && (input.empty() || !onlySpace(input)))
         std::cout << "Required field. Phone number: ";
@@ -148,13 +151,15 @@ int addContact(PhoneBook& phonebook)
     }
     newContact.setPhoneNumber(input);
 
-    //  std::cout << "darkest Secret: ";
-    //  while (std::getline(std::cin, input) && input.empty())
-    // std::cout << "Required field. darkest Secret: ";
-    //  newContact.setDarkstSecret(input);
+    if(std::cin.eof())
+         return (-2);
+    std::cout << "darkest Secret: ";
+    while (std::getline(std::cin, input) && input.empty())
+        std::cout << "Required field. darkest Secret: ";
+    newContact.setDarkstSecret(input);
     
-     phonebook.addContact(newContact);
-     return (0);
+    phonebook.addContact(newContact);
+    return (0);
 }
 
 
